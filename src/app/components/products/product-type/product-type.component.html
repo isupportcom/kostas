@@ -1,0 +1,12 @@
+<div class="product-type-content" fxFlexFill fxLayout="row wrap" fxLayoutAlign="start center">
+  <div *ngFor="let productType of productsType">
+    <div class="card" [matTooltip]="productType.description" matTooltipClass="tooltip" aria-label="Product type"
+      [class.zoom-selected]="productType === selectedProductType">
+      <button class="button-scrollable" (click)="setProductType(productType)">
+        <mat-card class="mat-elevation-z0 correct-size" [class.card-selected]="productType === selectedProductType">
+          <img [src]="productType.img_url" [alt]="productType.description" class="img">
+        </mat-card>
+      </button>
+    </div>
+  </div>
+</div>

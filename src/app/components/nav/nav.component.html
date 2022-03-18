@@ -1,0 +1,65 @@
+<div class="nav-content">
+  <mat-toolbar  class="mat-toolbar">
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+      <mat-icon  class="icon"aria-label="Side nav toggle icon" (click)="setIcon()">{{iconMenu}}</mat-icon>
+    </button>
+   <span style="color: black;">{{ customer.username }}</span> 
+    <img src="./assets/logo/logo2.png" alt="" style="display: block;margin-left: auto;margin-right: auto; width: 150px; ">
+    <!--<span class="right" style="color: black;" *ngIf="product">{{ product.pid }}</span>-->
+    <span style="color: black;">Log Out</span>
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="logout()">
+      <mat-icon  class="icon"aria-label="Side nav toggle icon">logout</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container   class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+      <mat-nav-list>
+        <mat-tab-group #tabGroup [selectedIndex]="selectedIndex" (selectedIndexChange)="setIndexValue($event)" >
+          <div class="tab-content" *ngFor="let tab of tabList;">
+            <div class="lds-dual-ring">
+              <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">{{tab.icon}}</mat-icon>
+                <p class="tab-name"style="margin-left: 2px;">{{tab.label}}</p>
+              </ng-template>
+              <div class="template-content">
+                <ng-template [ngComponentOutlet]="currentTab.component"></ng-template>
+              </div>
+            </mat-tab>
+            </div>
+          </div>
+        </mat-tab-group>
+        <div class="buttons">
+          <!-- <button mat-button color="primary" class="button" [disabled]="tabGroup.selectedIndex===0" title="previous" -->
+          <button mat-button  class="button" [disabled]="disabledPrevious" title="previous"
+            (click)="step('previous')">
+            <mat-icon>arrow_back_ios</mat-icon>
+            <span class="button-label-arrow">Πίσω</span>
+          </button>
+          <!-- <button mat-button color="primary" class="button" title="next" [disabled]="tabGroup.selectedIndex===tabLength" -->
+          <button mat-button color="gray" class="button" title="next" [disabled]="disabledNext"
+            (click)="step('next')">
+            <span class="button-label-arrow">Επόμενο</span>
+            <mat-icon>arrow_forward_ios</mat-icon>
+          </button>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+      <app-products></app-products>
+      
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <!-- Footer -->
+  <div class="footer" fxLayout="row" fxLayoutAlign="center center">
+    <!-- <div class="footer-logo-container" fxLayout="row" fxLayoutAlign="center center">  -->
+      <!-- <img class="footer-logo" src="assets/footer_logo.png"> -->
+      <h5 style="color:black;">Powered by <a href="https://isg.gr" target="_blank">isg Informatics</a></h5>
+    <!-- </div> -->
+  </div>
+</div>

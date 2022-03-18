@@ -1,0 +1,16 @@
+<div class="product-list-content">
+  <div fxFlexFill fxLayout="row wrap" fxLayoutAlign="center center">
+  <div *ngFor="let product of products">
+    <div class="card" [matTooltip]="product.description" matTooltipClass="tooltip" aria-label="Product Details"
+      [class.zoom-selected]="product === productDetails">
+      <button class="button-scrollable" (click)="setProduct(product)">
+        <mat-card class="mat-elevation-z0 correct-size" [class.card-selected]="product === productDetails">
+          <img [src]="product.thumbnail_url" [alt]="product.name" class="img">
+          <mat-card-content>
+            <h3>{{ product.pid }}</h3>
+          </mat-card-content>
+        </mat-card>
+      </button>
+    </div>
+  </div>
+</div>

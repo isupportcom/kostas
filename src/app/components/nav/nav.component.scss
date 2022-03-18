@@ -1,0 +1,156 @@
+.nav-content {
+  height  : 100%;
+  overflow: hidden;
+  
+  .icon{
+    color: black;
+  }
+  .sidenav-container {
+    height  : calc(100% - 94px);
+    overflow: hidden;
+  }
+
+  mat-sidenav-content {
+    overflow: hidden!important;
+  }
+
+  .footer {
+    height: 30px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #EFEBE7;
+    color: white;
+    box-shadow: 0px -5px 8px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px -5px 8px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -5px 8px 0px rgba(0,0,0,0.75);
+  }
+
+  .footer-logo-container{
+    margin-right: 20px;
+    background-color:white;
+    border-radius:10px;
+    padding: 5px 5px;
+  }
+
+  .footer-logo{
+    width: 50%;
+  }
+
+  .hide{
+    display: none;
+  }
+
+  .sidenav {
+    background-color: white;
+    position: absolute;
+    width   : 30%;
+    height  : 100%;
+    overflow: hidden !important;
+    box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.75);
+    border: 1px solid #00000038;
+  }
+
+  .sidenav .mat-toolbar {
+    background: inherit;
+    overflow  : hidden !important;
+  }
+
+  .right {
+    position: absolute;
+    right   : 1em;
+  }
+  #center{
+    position:center;
+    margin-left: 650px;
+  }
+
+  .tab-content {
+    height  : 100%;
+    width   : 100%;
+    overflow: hidden !important;
+  }
+
+  .template-content {
+    width       : 100%;
+    height      : 100%;
+    overflow    : hidden;
+    touch-action: pan-y;
+  }
+
+  .buttons {
+    position        : absolute;
+    background-color: white;
+    min-width       : 100%;
+    bottom          : 0;
+    left            : 0;
+    z-index         : 10;
+  }
+
+  .button {
+    width   : 50%;
+    float   : left;
+    padding : 1vh;
+    overflow: hidden;
+  }
+
+  .button-label {
+    font-size: large;
+    padding  : 1em;
+  }
+
+
+  .mat-tab-label-container {
+    overflow-x  : scroll !important;
+    touch-action: pan-x !important;
+  }
+
+  .mat-tab-label-container::-webkit-scrollbar {
+    /* Doesn't work on firefox!!! */
+    width : 0;
+    height: 0;
+  }
+
+  .mat-tab-label-container {
+    /* Firefox */
+    scrollbar-width: none;
+  }
+
+  /* MEDIA */
+
+  @media screen and (max-width: 1440px){
+    .sidenav {
+      min-width: 30%;
+      max-width: 100%;
+    }
+
+    .sidenav-container {
+      height: calc(100% - 96px);
+    }
+    .button-label-arrow{
+      display: none;
+    }
+  }
+
+  .mat-toolbar{
+    background-color: #EFEBE7;
+    color: white;
+    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+
+
+  }
+  .mat-tab-label-container{
+    .mat-tab-list{
+      .mat-ink-bar {
+        background-color: gray;
+      }
+    }
+  }
+  
+
+}

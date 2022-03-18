@@ -1,0 +1,75 @@
+  <div class="row" style="margin-bottom: 90px;">
+    <div class="col-xs-12">
+      <div class="product-frame-content" fxFlexFill fxLayout="row wrap" fxLayoutAlign="center">
+          <div *ngFor="let productFrame of productsFrame"  style="margin-right: 10px; margin-bottom: 10px; ">
+              <div class="card" [matTooltip]="productFrame.name" matTooltipClass="tooltip" aria-label="frame door"
+                    [class.zoom-selected]="productFrame === selectedProductFrame">
+                    <button class="button-scrollable" (click)="setProductFrame(productFrame)" style="cursor: pointer;" [frame]=(productFrame)>
+                    <mat-card class="mat-elevation-z0 correct-size" [class.card-selected]="productFrame === selectedProductFrame">
+                        <img [src]="productFrame.img_url" [alt]="productFrame.description" class="img">
+                    </mat-card>
+                    <h3>{{ productFrame.name }}</h3>
+                    </button>
+            </div>
+        </div>
+            <div  *ngIf="frame; else infoText" class="btn-group" role="group" aria-label="Basic example" style=" text-align: center;">
+              <h3 class="h3text" style="text-align: center;">Τύπος Πλαισίου</h3>
+              <button type="button" [ngClass]="[bntStyle0]" style="margin-right: 5px; margin-bottom: 5px; cursor: pointer;"(click)="onType(0)">FRAMED</button>
+              <button  type="button" [ngClass]="[bntStyle1]" style="margin-right: 5px; margin-bottom: 5px; cursor: pointer;"(click)="onType(1)">HINGED</button>
+              <button type="button" [ngClass]="[bntStyle2]" style="margin-right: 5px; margin-bottom: 5px; cursor: pointer;"(click)="onType(2)">WOODEN LEAF</button>
+              <!-- <button  type="button" [ngClass]="[bntStyle3]" style=" margin-bottom: 5px; cursor: pointer;"(click)="onType(3)">ALUMINIUM LEAF</button> -->
+            </div>        
+            <ng-template #infoText>
+              <h3 style="margin-top: 50px; text-align: center;">Επιλέξτε ένα από τα παραπάνω πλαίσια</h3>
+            </ng-template>
+
+            
+       </div>
+    </div>
+        <div *ngIf="gt10sizechoise" class="slider-container">
+          <div class="center-content">
+            <mat-label class="settings-label">Πάχος τοίχου (mm):</mat-label>
+            <input matInput class="input-box" type="number" min="75" max="195" [value]="currentsize" [placeholder]="currentsize"
+              (change)="resizegt10wall(currentsize)">
+          </div>
+          <br>
+            <mat-slider class="slider" [value]="currentsize" min="75" max="195" value="75" thumbLabel [displayWith]="formatLabel"
+            color="black" [(ngModel)]="currentsize" id="slider" (input)="currentsize = $event.value"
+            (change)="resizegt10wall(currentsize)">
+          </mat-slider>
+        </div>
+        
+
+      
+ 
+        <!-- frame KARE -->
+        
+      <div *ngIf="framed" class="product-frame-content" fxFlexFill fxLayout="row wrap" fxLayoutAlign="center">
+        <div *ngFor="let kare of kares"  style="margin-right: 10px; margin-bottom: 10px; ">
+          <div class="card" [matTooltip]="kare.name" matTooltipClass="tooltip" aria-label="frame kare"
+            [class.zoom-selected]="kare === selectedFrameKare">
+            <button class="button-scrollable" (click)="setFramekare(kare)" style="cursor: pointer;">
+            <mat-card class="mat-elevation-z0 correct-size2" [class.card-selected]="kare === selectedFrameKare">
+                <img [src]="kare.img_url" [alt]="kare.description" class="img">
+            </mat-card>
+            <h3>{{ kare.name }}</h3>
+            </button>
+         </div>
+       </div>
+     </div> 
+          
+          <h3 class="h3text" style="text-align: center;" *ngIf="ischeck">Τύπος κλειδαριάς</h3>
+          <div class="btn-group"  style="margin: auto;" *ngIf="ischeck" fxFlexFill fxLayout="row wrap" fxLayoutAlign="center">
+            <button [ngClass]="[bnt1]" (click)="lock(1)" *ngIf="framed" ><img style="width   : 9vh;" src="./assets/locks/gt14dl.jpg" alt="GT14DL"></button>
+            <button [ngClass]="[bnt2]" (click)="lock(2)" *ngIf="framed"><img style="width   : 9vh;" src="./assets/locks/gt14dl2.jpg" alt="GT14DL2"></button>
+            <button [ngClass]="[bnt3]" (click)="lock(3)" *ngIf="framed"><img style="width   : 9vh;" src="./assets/locks/dk24.jpg" alt="DK24"></button>
+            <button [ngClass]="[bnt4]" (click)="lock(4)" *ngIf="framed"><img style="width   : 9vh;" src="./assets/locks/hs07.jpg" alt="HS07"></button>
+            <button [ngClass]="[bnt5]" (click)="lock(5)" *ngIf="hinged"><img style="width   : 9vh;" src="./assets/locks/dk24.jpg" alt="DK24"></button>
+            <button [ngClass]="[bnt6]" (click)="lock(6)" *ngIf="hinged"><img style="width   : 9vh;" src="./assets/locks/dl04.jpg" alt="DL04"></button>
+            <button [ngClass]="[bnt7]" (click)="lock(7)" *ngIf="hinged"><img style="width   : 9vh;" src="./assets/locks/hd01a.jpg" alt="HD01A"></button>
+            <button [ngClass]="[bnt8]" (click)="lock(8)" *ngIf="wooden"><img style="width   : 9vh;" src="./assets/locks/round.jpg" alt="ROUND"></button>
+            <button [ngClass]="[bnt9]" (click)="lock(9)" *ngIf="wooden"><img style="width   : 9vh;" src="./assets/locks/square.jpg" alt="SQUARE"></button>
+          </div>
+        
+  </div>
+

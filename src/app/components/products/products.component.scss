@@ -1,0 +1,150 @@
+.products-content {
+  background     : url('https://wallpaperaccess.com/full/1091554.jpg');
+  background-size: 100% 100%;
+  box-sizing: border-box;
+  display        : block;
+
+  .imageDoor{
+    display: flex;
+    justify-content: center;
+  }
+
+  .image-container {
+    box-sizing    : border-box;
+    position      : relative;
+    display       : absolute;
+    align-items   : center;
+    justify-content: center;
+   // transform  : scale(0.1);
+    
+  }
+
+  .object-back{
+      position: absolute;
+      display:flex;
+    }
+
+    .object-top{
+      margin-left: 2px;
+      width: 675px;
+      height: 833px;
+      position: absolute;
+      display:flex;
+    }
+    .glass {
+      
+      position: absolute;
+      display: flex;
+    }
+    .glass2 {
+      position: absolute;
+      display: flex;
+      margin-right: 25px;
+      -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    }
+
+  .object{
+    position: relative;
+    display: flex;
+  }
+  .object2 {
+    position: relative;
+    display: flex;
+    margin-right: 25px;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+  .hide {
+    display: none;
+  }
+
+  .frame:hover{
+    transition: transform .5s ease-in-out;
+    transform : scale(1.2);
+  }
+
+  .frame{
+    margin-top: 20px;
+    border-radius: 50%;
+    width: 125px;
+    height: 125px;
+  }
+
+  .icons{
+    height: 790px;
+    width: 100px;
+    margin-right: 1000px; 
+    position: fixed;
+  }
+
+  //MEDIA
+
+  @media screen and (max-width: 1840px) {
+
+    .frame{
+      border-radius: 50%;
+       width: 80px;
+       height: 80px;
+    }
+    .frame:hover{
+      transition: transform .5s ease-in-out;
+      transform : scale(1.2);
+    }
+
+    .object-back{
+      width: 400px ;
+      height: 500px ;
+      position: absolute;
+      display: flex;
+    }
+    .glass,.object-top{
+      width: 410px ;
+      height: 500px ;
+      position: absolute;
+      display: flex;}
+
+      .glass2 {
+        position: absolute;
+        display: flex;
+        margin-right: 15px;
+        -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      }
+    .object2 {
+      width: 400px ;
+      height: 500px ;
+      margin-right: 15px;
+      position: relative;
+      display: flex;
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      display: flex;
+    }
+    .object {
+      position: relative;
+      display: flex;
+      width: 400px ;
+      height: 500px ;
+      display: flex;
+    }
+    .hide {
+      display: none;
+    }
+
+    .icons{
+      position: relative;
+      height: 500px;
+      width: 100px;
+      margin-right: 500px; 
+      position: fixed;
+    }
+    
+}
+@media screen and (max-width: 600px){
+  .frame{
+    display: none;
+  }
+}
+}
+

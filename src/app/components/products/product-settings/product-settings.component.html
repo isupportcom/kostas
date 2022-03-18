@@ -1,0 +1,111 @@
+<div class="product-setting-content" fxFlexFill fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center center">
+  <div class="section">
+    <div>
+      <div class="h3text">Επιλογή Διάστασης Πόρτας</div>
+      <div class="slider-container">
+        <mat-label class="settings-label">Πλάτος πόρτας (cm):</mat-label>
+        <div class="center-content">
+          <input matInput class="input-box" type="number" min="50" max="120" [placeholder]="currentDoorWidth"
+            [(ngModel)]="currentDoorWidth" (change)="resizeImageDoorWidth(currentDoorWidth)">
+        </div>
+        <mat-slider class="slider" [value]="currentDoorWidth" min="50" max="120" thumbLabel [displayWith]="formatLabel"
+          color="black" [(ngModel)]="currentDoorWidth" id="slider" (input)="currentDoorWidth = $event.value"
+          (change)="resizeImageDoorWidth(currentDoorWidth)">
+        </mat-slider>
+      </div>
+
+      <div class="slider-container">
+        <mat-label class="settings-label">Ύψος πόρτας (cm):</mat-label><br>
+        <div class="center-content">
+          <input matInput class="input-box" type="number" min="190" max="300" [placeholder]="currentDoorHeight"
+            [(ngModel)]="currentDoorHeight" (change)="resizeImageDoorHeight(currentDoorHeight)"><br>
+        </div>
+        <mat-slider class="slider" value="190" min="190" [max]="findlimit" thumbLabel [displayWith]="formatLabel"
+          color="black" [(ngModel)]="currentDoorHeight" (input)="currentDoorHeight = $event.value"
+          (change)="resizeImageDoorHeight(currentDoorHeight)">
+        </mat-slider>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+
+    <div class="row">
+      <h3 class="h3text">Θέση κλειδαριάς της πόρτας</h3>
+      <div class="btn-din">
+        <div style="display: flex; flex-direction: column; text-align: center;">
+          <button class="btn-default" style="margin-right: 15px;" [ngClass]="[bntStyle0]" (click)="validLock(0)">
+            <img class="lockimg" src="../../../../assets/DIN/DIN RIGHT.jpg" alt="">
+        </button>
+        <span style="font-weight: bold;">DIN LEFT</span>
+        </div>
+        <div style=" display: flex; flex-direction: column; text-align: center;">
+          <button class="btn-default" [ngClass]="[bntStyle1]" (click)="validLock(1)">
+          <img class="lockimg" src="../../../../assets/DIN/DIN LEFT.jpg" alt="">
+        </button>
+        <span style="font-weight: bold;">DIN RIGHT</span>
+        </div>
+        
+      </div>
+    </div>
+
+    
+
+    <!-- START ==> EXTRA SLIDERS FOR EVERY DOOR EXTRA COMPONENT -->
+    <div *ngIf="validLeft">
+      <mat-divider></mat-divider>
+      <div class="title">Επιλογή Διάστασης Αριστερού Παραθύρου</div>
+      <div class="slider-container">
+        <mat-label class="settings-label">Πλάτος αριστερού μέρους παραθύρου (cm):</mat-label><br>
+        <div class="center-content">
+          <input matInput class="input-box" type="number" min="100" max="150" [placeholder]="currentLeftWidth"
+            [(ngModel)]="currentLeftWidth" (change)="resizeImageLeftWidth(currentLeftWidth)"><br>
+        </div>
+        <mat-slider class="slider" value="100" min="100" max="150" thumbLabel [displayWith]="formatLabel"
+          color="black" [(ngModel)]="currentLeftWidth" (input)="currentLeftWidth = $event.value"
+          (change)="resizeImageLeftWidth(currentLeftWidth)">
+        </mat-slider>
+      </div>
+    </div>
+
+    <div *ngIf="validRight">
+      <mat-divider></mat-divider>
+      <div class="title">Επιλογή Διάστασης Δεξιού Παραθύρου</div>
+      <div class="slider-container">
+        <mat-label class="settings-label">Πλάτος δεξιού μέρους παραθύρου (cm):</mat-label><br>
+        <div class="center-content">
+          <input matInput class="input-box" type="number" min="100" max="150" [placeholder]="currentRightWidth"
+            [(ngModel)]="currentRightWidth" (change)="resizeImageRightWidth(currentRightWidth)"><br>
+        </div>
+        <mat-slider class="slider" value="100" min="100" max="150" thumbLabel [displayWith]="formatLabel"
+          color="black" [(ngModel)]="currentRightWidth" (input)="currentRightWidth = $event.value"
+          (change)="resizeImageRightWidth(currentRightWidth)">
+        </mat-slider>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+
+    <div *ngIf="validTop">
+      <mat-divider></mat-divider>
+      <div class="title">Επιλογή Διάστασης Επάνω Παραθύρου</div>
+      <div class="slider-container">
+        <mat-label class="settings-label">Ύψος φεγγίτη (cm):</mat-label><br>
+        <div class="center-content">
+          <input matInput class="input-box" type="number" min="100" max="150" [placeholder]="currentTopHeight"
+            [(ngModel)]="currentTopHeight" (change)="resizeImageTopHeight(currentTopHeight)"><br>
+        </div>
+        <mat-slider class="slider" value="100" min="100" max="150" thumbLabel [displayWith]="formatLabel"
+          color="black" [(ngModel)]="currentTopHeight" (input)="currentTopHeight = $event.value"
+          (change)="resizeImageTopHeight(currentTopHeight)">
+        </mat-slider>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+    <!-- END ==> EXTRA SLIDERS FOR EVERY DOOR EXTRA COMPONENT -->
+
+    <div class="fullDimension">
+      <div class="title">Συνολική Διάσταση</div>
+      <span class='settings-label'>
+        {{ fullWidth / 100 | number : '.2-2' }}m &#215; {{ fullHeight / 100 |number : '.2-2' }}m
+      </span>
+    </div>
+  </div>
+</div>

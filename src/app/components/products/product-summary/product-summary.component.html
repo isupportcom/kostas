@@ -1,0 +1,227 @@
+<div style="z-index: 2!important" class="product-summary-content" fxLayout="column" fxLayoutGap="32px" fxLayoutAlign="center start">
+  <div class="section">
+    <div class="title">Η διαμόρφωσή σας</div>
+    <div class="info">
+      <p>
+        <mat-label class="label">Πελάτης</mat-label>
+        <span class="text">{{ customer.username }}</span>
+      </p>
+      <p>
+        <mat-label class="label">Τιμολογιακή πολιτική</mat-label>
+        <span class="text">{{ customer.timol_pol.name }}</span>
+      </p>
+      <p>
+        <mat-label class="label">Ποσοστό έκπτωσης</mat-label>
+        <span class="text">{{ customer.timol_pol.discount }}%</span>
+      </p>
+
+      <mat-divider></mat-divider>
+
+      <p>
+        <mat-label class="label">Μοντέλο</mat-label>
+        <span class="text">{{ product.pid }}</span>
+      </p>
+      <p>
+        <p>
+          <mat-label class="label">Πλαίσιο</mat-label>
+          <span class="text">{{ frame.name}}</span>
+        </p>
+        <p>
+          <mat-label class="label">Χρώμα πλαισίου</mat-label>
+          <span class="text">{{ color.name}}</span>
+        </p>
+        <p>
+          <mat-label class="label">Χρώμα φύλλου</mat-label>
+          <span class="text">{{ glass.name}}</span>
+        </p>
+        <p *ngIf="framed">
+          <mat-label class="label">Kλειδαριά</mat-label>
+          <span class="text">{{ lockstype }}</span>
+        </p>
+        <p>
+          <mat-label class="label">Θέση κλειδαριάς της πόρτας</mat-label>
+          <span class="text">{{ lock }}</span>
+        </p>
+        <p>
+        <mat-label class="label">Διαστάσεις</mat-label>
+        <span class="text">{{ width/100 | number : '.2-2' }}m &#215; {{ height/100 | number : '.2-2' }}m</span>
+      </p>
+    </div>
+  </div>
+  <div class="summary-buttons" style="margin-bottom: 50px; align-items: center;">
+    <!-- <button class="button-first" mat-button color="gray" (click)="downloadAsPDF()">
+      <mat-icon>file_download</mat-icon>
+      <span class="button-label">Λήψη PDF</span>
+    </button>
+    <button class="button-first" style="margin-top: 5px;" mat-button color="gray" (click)="downloadAsPDF()">
+      <mat-icon>print</mat-icon>
+      <span class="button-label">Εκτύπωση PDF</span>
+    </button> -->
+    <button class="button-first" style="margin-top: 5px; margin-bottom: 25px;" mat-button color="gray" (click)="downloadAsPDF(true)">
+      <mat-icon>preview</mat-icon>
+      <span class="button-label">Λήψη PDF</span>
+    </button>
+    <button class="button-first" style="margin-top: 5px; margin-bottom: 25px;" mat-button color="gray" (click)="downloadAsPDF(false)">
+      <mat-icon>preview</mat-icon>
+      <span class="button-label">Προβολή PDF</span>
+    </button>
+  </div>
+</div>
+
+<div style="position:absolute; width:1400px; z-index:1!important; margin-top: 50em;"  [ngClass]="{ 'hide' : hideInfo }" #content fxLayoutGap="50px">
+
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+      <img style="width:1400px;" src="assets/pdf_pca.png">
+      <h1><b>OFFER</b></h1>
+  </div>
+  <div style="margin-top:2em" fxLayout="row" fxLayoutAlign="space-around stretch" fxFlexFill>
+      <div fxLayout="column" style="height:200px;" fxFlex="40" fxLayoutAlign="start" >
+          <div fxLayout="row" fxLayoutAlign="start" >  
+              <h2><b>Customer: {{customer.username}}</b></h2> 
+          </div>
+      </div>
+      <div fxLayout="column" style="height:200px;" fxFlex="40"  fxLayoutAlign="center">
+          <div fxLayout="row" style="margin-right: 4em;" fxLayoutAlign="center">
+              <div fxLayout="column" Flex="80" fxLayoutAlign="center start">
+                  <h2>DOCUMENT NR.: 1</h2>
+                  <h2>DATE: {{dateNow | date : 'short'}}</h2>
+              </div>
+          </div> 
+      </div>
+  </div>
+  <div style="margin-top:2em" fxLayout="row" fxLayoutAlign="space-around stretch" fxFlexFill>
+      <div fxLayout="column" fxFlex="40" fxLayoutAlign="start" >
+          <div fxLayout="row" fxLayoutAlign="start" >  
+              <img [src]="pdfImage.src" style="width:600px;height:800px;object-fit: cover;"> 
+          </div>
+      </div>
+      <div fxLayout="column" fxFlex="40" fxLayoutAlign="stretch">
+          <div fxLayout="row" fxLayoutAlign="start">
+              <div fxLayout="column" fxLayoutAlign="start">
+                  <div fxLayout="row" fxLayoutAlign="start" style="margin-top: 1em;" fxLayoutGap="20px">
+                    <div>
+                      <img style="width:100px; height:100px; object-fit:cover;border-radius: 45%; border:1px solid black;" src="{{imagedin}}" alt="">
+                    </div>
+                    <div fxLayout="column" fxLayoutAlign="center start">
+                      <h3>{{product.pid}}</h3>
+                      <h3 style="font-weight: 500;">MODEL</h3>
+                    </div>
+                  </div>
+
+                  <div fxLayout="row" fxLayoutAlign="start" style="margin-top: 1em;" fxLayoutGap="20px">
+                    <div>
+                      <img style="width:100px; height:100px; object-fit:cover;border-radius: 45%; border:1px solid black;" src="{{imageframe}}" alt="">
+                    </div>
+                    <div fxLayout="column" fxLayoutAlign="center start">
+                      <h3>{{product.product_frame.name}}</h3>
+                      <h3 style="font-weight: 500;">DOOR FRAME</h3>
+                    </div>
+                  </div>
+
+                  <div fxLayout="row" fxLayoutAlign="start" style="margin-top: 1em;" fxLayoutGap="20px">
+                    <div>
+                      <img style="width:100px; height:100px; object-fit:cover;border-radius: 45%; border:1px solid black;" src="{{imagecolor}}" alt="">
+                    </div>
+                    <div fxLayout="column" fxLayoutAlign="center start">
+                      <h3>{{color.name}}</h3>
+                      <h3 style="font-weight: 500;">FRAME COLOR</h3>
+                    </div>
+                  </div>
+
+                  <div fxLayout="row" fxLayoutAlign="start" style="margin-top: 1em;" fxLayoutGap="20px">
+                    <div>
+                      <img style="width:100px; height:100px; object-fit:cover;border-radius: 45%; border:1px solid black;" src="{{imageglass}}" alt="">
+                    </div>
+                    <div fxLayout="column" fxLayoutAlign="center start">
+                      <h3>{{glass.name}}</h3>
+                      <h3 style="font-weight: 500;">GLASS COLOR</h3>
+                    </div>
+                  </div>
+
+                  <div fxLayout="row" fxLayoutAlign="start" style="margin-top: 1em;" fxLayoutGap="20px">
+                    <div>
+                      <img style="width:100px; height:100px; object-fit:cover;border-radius: 45%; border:1px solid black;" src="{{imagelock}}" alt="">
+                    </div>
+                    <div fxLayout="column" fxLayoutAlign="center start">
+                      <h3>{{lockstype}}</h3>
+                      <h3 style="font-weight: 500;">LOCK TYPE</h3>
+                    </div>
+                  </div>
+
+                  <div style="margin-top: 2em;">
+                      <h3>{{lockpos}}</h3>
+                      <h3 style="font-weight: 500;">LOCK POSITION</h3>
+                  </div>
+                  <div style="margin-top: 1em;">
+                      <h3>{{dimentions}} cm</h3>
+                      <h3 style="font-weight: 500;">DOOR DIMENSIONS</h3>
+                  </div>
+                  <div *ngIf="wallWidth != null || wallWidth != undefined" style="margin-top: 1em;">
+                      <h3>{{wallWidth}} cm</h3>
+                      <h3 style="font-weight: 500;">WALL WIDTH</h3>
+                  </div>
+              </div>
+          </div> 
+      </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-around stretch" fxFlexFill>
+      <div style="margin-top:10em"  fxLayout="column" fxFlex="40" fxLayoutAlign="start" >
+          <div fxLayout="row" fxLayoutAlign="start" >  
+              <h2 style="margin-left:5em;"><b>Retail Price: </b></h2> 
+          </div>
+          <div style="margin-top:3em;" fxLayout="column" fxLayoutAlign="start" >  
+              <div><b>Terms and conditions: </b></div> 
+              <div>The offer is valid for 15 days.</div> 
+          </div>
+          <div style="margin-top:1em;" fxLayout="column" fxLayoutAlign="start" >  
+              <div>The shipping expenses burden the buyer. </div> 
+              <div>For order confirmation </div> 
+              <div>please return the current</div> 
+              <div>signed and stamped </div> 
+              <div>to info@papgroup.gr</div> 
+          </div>
+      </div>
+      <div fxLayout="column" fxFlex="40" fxLayoutAlign="end">
+          <div fxLayout="row" fxLayoutAlign="end">
+              <div fxLayout="column" fxLayoutAlign="end">
+                  <div style="width:400px; height: 200px; border: 1px solid black; text-align:center;">
+                      <h4>Stamp and Sign</h4>
+                  </div>
+              </div>
+          </div> 
+      </div>
+  </div>
+  <hr style="border:1px solid black; margin-top:2em; width: 95% !important;">  
+  <div fxLayout="row" fxLayoutAlign="space-around stretch" fxFlexFill>
+      <div style="margin-top:2em"  fxLayout="column" fxFlex="40" fxLayoutAlign="start" >
+          <div fxLayout="row" fxLayoutAlign="start" >
+              <h4> EUROBANK: GR34 0260 3500 0004 6020 0711 004
+              </h4> 
+          </div>
+
+          <div style="margin-top:1em; visibility: hidden;" fxLayout="column" fxLayoutAlign="start" >  
+              <div>The shipping expenses burden the buyer. </div> 
+              <div>For order confirmation </div> 
+              <div>please return the current</div> 
+              <div>signed and stamped </div> 
+              <div>to info@papgroup.gr</div> 
+          </div>
+      </div>
+      <div  fxLayout="column" fxFlex="40" fxLayoutAlign="end">
+          <div fxLayout="row" fxLayoutAlign="end">
+              <div fxLayout="column" fxLayoutAlign="end">
+                  <div style="width:400px; height: 200px; border: 1px solid rgba(0, 0, 0, 0); text-align:center;">
+                      
+                  </div>
+              </div>
+          </div> 
+      </div>
+  </div>
+</div>
+
+<div  *ngIf="spinerVisible == true">
+  <div fxLayout="column" fxLayoutAlign="center center" class="utilsDiv"> 
+    <mat-spinner></mat-spinner>   
+    <h2>Exporting to PDF</h2>
+  </div>
+</div>

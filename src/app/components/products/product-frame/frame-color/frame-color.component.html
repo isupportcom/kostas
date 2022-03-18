@@ -1,0 +1,155 @@
+<div  class="row" style="margin-top: 20px;">
+  <div *ngIf="ftype; else error"  class="col-xs-12" >
+    
+    <!-- glasses --> 
+    <h4 class="h3text">{{_colorsGlass[0].category}} COLORS</h4>
+    <div class="frame-color-content" fxFlexFill fxLayout="row wrap" fxLayoutAlign="center">
+         <div *ngFor="let color of _colorsGlass" style="margin-right: 10px; margin-bottom: 10px; ">
+           <div class="card" matTooltipClass="tooltip" aria-label="frame door">
+              <div class="btn-group-vertical" (click)="setColorGlass(color)"role="group" aria-label="Vertical button group">
+                <button class="button-scrollable" style="cursor: pointer;">
+                  <mat-card class="mat-elevation-z0 correct-size" [class.card-selected]="color === selectedColorGlass">
+                    <img [src]="color.thumb_img" [alt]="color.category" class="img">
+                    <img *ngIf="color === selectedColorGlass" class="img" src="../../../../../assets/tick.png" alt="" style="width: 50px;height: 50px; position: absolute; top: 25%;
+                    left: 25%;">
+                 </mat-card>
+                 <h4>{{color.name}}</h4>
+                </button>
+              </div>
+            </div>
+          </div>
+       </div>
+       <!-- colors --> 
+
+       <!-- <div class="lock" style=" margin-bottom: 20px;" >
+        <label class="colorlabel"> -->
+        <h3 class="h3text">ANODIZE COLORS</h3> 
+        <!-- <label class="switch" >
+          <input type="checkbox" (change)="check(0)">
+          <span class="slder round"></span>
+        </label>
+        </label> -->
+        <!-- </div> -->
+
+       <div  style="margin-bottom: 20px;">
+         <h4 style="text-align: center; margin-top: auto; "></h4>
+         <div class="frame-color-content" fxFlexFill fxLayout="row wrap" fxLayoutAlign="center">
+           <div *ngFor="let andz of _anodize" style="margin-right: 10px; margin-bottom: 10px; ">
+             <div class="card" matTooltipClass="tooltip" aria-label="frame door">
+                <div class="btn-group-vertical" (click)="setColorAnodize(andz)"role="group" aria-label="Vertical button group">
+                  <button class="button-scrollable" style="cursor: pointer;">
+                    <mat-card class="mat-elevation-z0 correct-size" [class.card-selected]="andz === selectedColorFrame">
+                      <img [src]="andz.img_thumb" [alt]="andz.category" class="img">
+                      <img *ngIf="andz === selectedColorFrame" class="img" src="../../../../../assets/tick.png" alt="" style="width: 70px;height: 70px; position: absolute; top: 15%;
+                    left: 15%;">
+                   </mat-card>
+                   <h4>{{andz.name}}</h4>
+                  </button>
+                </div>
+              </div>
+            </div>
+         </div>
+       </div>
+
+
+       <!-- <div class="lock" style=" margin-bottom: 20px;" >
+        <label class="colorlabel"> -->
+        <h3 class="h3text">RAL COLORS</h3> 
+        <!-- <label class="switch" style="margin:left" >
+          <input type="checkbox" (change)="check(1)">
+          <span class="slder round"></span>
+        </label>
+        </label> -->
+        <!-- </div> -->
+
+       <div style="margin-bottom: 20px;">
+        <h4 style="text-align: center; margin-top: auto; "></h4>
+         <div class="frame-color-content" fxFlexFill fxLayout="row wrap" fxLayoutAlign="center">
+          <div *ngFor="let ral of _ral_colors" style="margin-right: 10px; margin-bottom: 10px; ">
+            <div class="card" matTooltipClass="tooltip" aria-label="frame door">
+               <div class="btn-group-vertical" (click)="setColorRal(ral)"role="group" aria-label="Vertical button group">
+                 <button class="button-scrollable" style="cursor: pointer;">
+                   <mat-card class="mat-elevation-z0 correct-size" [class.card-selected]="ral === selectedColorFrame">
+                     <img [src]="ral.img_thumb" [alt]="ral.category" class="img">
+                     <img *ngIf="ral === selectedColorFrame" class="img" src="../../../../../assets/tick.png" alt="" style="width: 70px;height: 70px; position: absolute; top: 15%;
+                    left: 15%;">
+                  </mat-card>
+                  <h4>{{ral.name}}</h4>
+                 </button>
+               </div>
+             </div>
+           </div>
+        </div>
+      </div>
+
+      <!-- <div class="lock" style=" margin-bottom: 20px;" >
+        <label class="colorlabel"> -->
+        <h3  class="h3text">RAL STRUCTURA COLORS</h3> 
+        <!-- <label class="switch" style="margin:left" >
+          <input type="checkbox" (change)="check(2)">
+          <span class="slder round"></span>
+        </label>
+        </label> -->
+        <!-- </div> -->
+
+      <div  style="margin-bottom: 20px;">
+        <h4 style="text-align: center; margin-top: auto; "></h4>
+         <div class="frame-color-content" fxFlexFill fxLayout="row wrap" fxLayoutAlign="center">
+          <div *ngFor="let rals of _ral_structura" style="margin-right: 10px; margin-bottom: 10px; ">
+            <div class="card" matTooltipClass="tooltip" aria-label="frame door">
+               <div class="btn-group-vertical" (click)="setColorRals(rals)"role="group" aria-label="Vertical button group">
+                 <button class="button-scrollable" style="cursor: pointer;">
+                   <mat-card class="mat-elevation-z0 correct-size" [class.card-selected]="rals === selectedColorFrame">
+                     <img [src]="rals.img_thumb" [alt]="rals.category" class="img">
+                     <img *ngIf="rals === selectedColorFrame" class="img" src="../../../../../assets/tick.png" alt="" style="width: 70px;height: 70px; position: absolute; top: 15%;
+                    left: 15%;">
+                  </mat-card>
+                  <h4>{{rals.name}}</h4>
+                 </button>
+               </div>
+             </div>
+           </div>
+        </div>
+      </div>
+
+      <!-- <div class="lock" style=" margin-bottom: 100px;" >
+        <label class="colorlabel"> -->
+        <h3 class="h3text">SPECIAL RAL SABLE</h3> 
+        <!-- <label class="switch" style="margin:left" >
+          <input type="checkbox" (change)="check(3)">
+          <span class="slder round"></span>
+        </label>
+        </label> -->
+        <!-- </div> -->
+
+      <div  style="margin-bottom: 20px;">
+        <h4 style="text-align: center; margin-top: auto; "></h4>
+         <div class="frame-color-content" fxFlexFill fxLayout="row wrap" fxLayoutAlign="center">
+          <div *ngFor="let spc of _special_ral_sable" style="margin-right: 10px; margin-bottom: 10px; ">
+            <div class="card" matTooltipClass="tooltip" aria-label="frame door">
+               <div class="btn-group-vertical" (click)="setColorSpecial(spc)"role="group" aria-label="Vertical button group">
+                 <button class="button-scrollable" style="cursor: pointer;">
+                   <mat-card class="mat-elevation-z0 correct-size" [class.card-selected]="spc === selectedColorFrame">
+                     <img [src]="spc.img_thumb" [alt]="spc.category" class="img">
+                     <img *ngIf="spc === selectedColorFrame" class="img" src="../../../../../assets/tick.png" alt="" style="width: 70px;height: 70px; position: absolute; top: 15%;
+                    left: 15%;">
+                  </mat-card>
+                  <h4>{{spc.name}}</h4>
+                 </button>
+               </div>
+             </div>
+           </div>
+        </div>
+      </div>
+
+
+      
+ </div>
+ <ng-template #error >
+  <h3 style="margin-top: 10; text-align: center;">Διάλεξε τύπο πλαισίου...</h3>
+</ng-template>
+</div>
+
+
+
+

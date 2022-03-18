@@ -1,0 +1,22 @@
+<div class="products-content" fxFill fxLayout="row" fxLayoutAlign="center center"  fxLayout.sm="column" fxLayoutGap="20px" *ngIf="product">
+  <div fxLayout="column" fxLayout.sm="row" fxLayoutAlign="space-between space-between">
+    <img [src]="imagedin" style="margin: 10px 10px;"  class="frame" alt="" [ngClass]="{'hide':!imagedin}">
+    <img [src]="imageframe" style="margin: 10px 10px;" class="frame" alt=""[ngClass]="{'hide':!imageframe}">
+    <img [src]="imageglass" style="margin: 10px 10px;" class="frame" alt=""[ngClass]="{'hide':!imageglass}">
+    <img [src]="imagelock"  style="margin: 10px 10px;" class="frame" alt=""[ngClass]="{'hide':!imagelock}">
+    <img [src]="imagecolor"  style="margin: 10px 10px;" class="frame" alt=""[ngClass]="{'hide':!imagecolor}">
+  </div>
+  <div class="img-container" #image>
+      <div class="imageDoor" >
+        <img #glass  class="glass" src="{{product.glass_img}}" alt="" [ngClass]="{'hide':iswooden}">
+        <img  #walls class="object-back" src="../../../assets/background/background_walls1.png" alt="">
+        <img #kare class="glass" src={{product.description}} alt="" [ngClass]="{'hide':!isframed, 'hide': noimage, 'glass2': !validLockLeft}">
+        <img #topWall class="object-top" src="../../../assets/background/top-wall.png">
+        <img #glass2  class="glass" src="{{product.glass_img}}" alt="" [ngClass]="{'hide':!iswooden}">
+        <img #imgDoor class="object" [src]="sanitized(product.image_url)" [alt]="product.name" [ngClass]="{'hide':!validLockLeft}">
+        <img #imgDoor2 class="object2" [src]="sanitized(product.image_url)" [alt]="product.name" [ngClass]="{'hide':!validLockRight}">
+        <img #imgHinge class="glass" src="{{product.product_frame.description}}" alt="" [ngClass]="{'hide':!doorheight, 'glass2': !validLockLeft}"> 
+    </div>
+  </div> 
+</div>
+    

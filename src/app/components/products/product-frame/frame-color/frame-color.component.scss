@@ -1,0 +1,172 @@
+.frame-color-content{
+    overflow      : hidden;
+    padding-bottom: 2em;
+    width         : 100%;
+    max-height    : 100%;
+    touch-action  : pan-y !important;
+ 
+  .mat-elevation-z0{
+      background: gray;
+      border-radius: 5px;
+      padding: 10px;
+  }
+    .card {
+      display        : flex;
+      margin         : 0.5em;
+      justify-content: center;
+      justify-items: center;
+      touch-action   : pan-y !important;
+      border-radius: 5px;
+    }
+  
+    .card:hover {
+      /* Animation */
+      transition: transform .5s ease-in-out;
+      transform : scale(1.05);
+      color: white;
+    }
+  
+    .correct-size {
+      width: 6em;
+    }
+  
+    .img {
+      width: 100%;
+    }
+  
+    .tooltip-color {
+      font-size : large;
+    }
+  
+    .button-scrollable {
+      background  : none !important;
+      border      : none;
+      padding     : 0 !important;
+      cursor      : pointer;
+      outline     : none;
+      touch-action: pan-y;
+    }
+  
+    .icon {
+      position  : relative;
+      text-align: center;
+    }
+  
+    .zoom-selected {
+      transition: transform .2s ease-in-out;
+      transform : scale(1.05);
+    }
+  
+    .card-selected {
+        color: white;
+        background: rgb(0, 0, 0);
+        opacity   : 0.9;
+      }
+  
+    .next img {
+      width   : 14vh;
+      height  : auto;
+      position: fixed;
+      right   : 0px;
+      bottom  : 0px;
+      padding : 20px;
+    }
+    
+    .mat-elevation-z0:hover{
+      color: white;
+        background: rgb(0, 0, 0);
+        opacity   : 0.9;
+    }
+    .hide {
+      display: none;
+    }
+    .hide2 {
+      display: none;
+    }
+
+    .switch {
+      position: relative;
+      display: flex;
+      margin-left: auto;
+      width: 60px;
+      height: 34px;
+      margin:left; 
+      margin-right: 30px;
+    }
+    
+    .switch input { 
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slder {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    .slder:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    input:checked + .slder {
+      background-color: #1e1f20;
+    }
+    
+    input:focus + .slder {
+      box-shadow: 0 0 1px #1e1f20;
+    }
+    
+    input:checked + .slder:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+    
+    /* Rounded sliders */
+    .slder.round {
+      border-radius: 34px;
+    }
+    
+    .slder.round:before {
+      border-radius: 50%;
+    }
+
+    .colorlabel{
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+  }
+  .h3text{
+    text-align: center; margin-top: auto; font: bold;align-items: center; padding: 10px;
+  border: 1px solid #000000; color: white; background-color: black; width: 50%;margin-left: 25%;
+  border-radius: 5px;
+  }
+
+    @media only screen and (max-width: 600px) {
+      .frame-color-content{
+        overflow      : hidden;
+        padding-bottom: 2.5em;
+        width         : 100%;
+        max-height    : 100%;
+        touch-action  : pan-y !important;
+        justify-content: center;
+      }
+    }

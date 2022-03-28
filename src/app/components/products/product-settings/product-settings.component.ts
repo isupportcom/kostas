@@ -77,7 +77,7 @@ export class ProductSettingsComponent implements OnInit, AfterViewInit {
   private _fullWidth: number;
   private _fullHeight: number;
 
-  
+
 
   constructor(
     private renderer: Renderer2,
@@ -101,18 +101,18 @@ export class ProductSettingsComponent implements OnInit, AfterViewInit {
   bntStyle0: string;
   bntStyle1: string;
   limit: number;
-  query = window.matchMedia("(max-width: 1840px)")
+  query = window.matchMedia("(max-width: 200%)")
 
   ngOnInit(): void {
 
     this.bntStyle0 = 'btn-';
     this.bntStyle1 = 'btn-';
-    
+
     if(this.pfService.productframe.type === "HINGED" || this.pfService.productframe.type === 'WOODEN LEAF'){
       console.log("ANOTHER LIMIT")
-      this.limit = 320;
+      this.limit = 250;
     }else{
-      this.limit = 300;
+      this.limit = 250;
     }
 
     if(this.imageService.validLockLeft){
@@ -137,7 +137,7 @@ export class ProductSettingsComponent implements OnInit, AfterViewInit {
     this.imageKare = this.imageService.imageElementKare;
 
     // Door section START
-   
+
 
     if (this.query.matches) { // If media query matches
       this.imageService.setInitDoorWidth(this.imageDoor.naturalWidth/1.66);
@@ -146,7 +146,7 @@ export class ProductSettingsComponent implements OnInit, AfterViewInit {
       this.imageService.setInitDoorWidth(this.imageDoor.naturalWidth);
       this.imageService.setInitDoorHeight(this.imageDoor.naturalHeight);
     }
-      
+
 
     this._initDoorWidth = this.imageService.initDoorWidth;
     this._initDoorHeight = this.imageService.initDoorHeight;
@@ -648,7 +648,7 @@ export class ProductSettingsComponent implements OnInit, AfterViewInit {
     this.renderer.setStyle(this.imageGlass,'width', doorWidth + 'px');
     this.renderer.setStyle(this.imageKare,'width', doorWidth + 'px');
     }
-    
+
     //this.renderer.setStyle(this.imageWalls,'width', doorWidth + 'px');
     if (this.validTop) {
       this.renderer.setStyle(this.imageDoorTop, 'width', doorWidth + 'px');
@@ -656,20 +656,21 @@ export class ProductSettingsComponent implements OnInit, AfterViewInit {
   }
 
   renderTop(top: number,wdth: number): void{
-    this.renderer.setStyle(this.imageTopWall, 'height', top  + 'px');
+    //  this.renderer.setStyle(this.imageTopWall, 'height', top  + 'px');
     if(wdth>600){
       this.renderer.setStyle(this.imageTopWall, 'width', 675  + 'px');
     }else{
       this.renderer.setStyle(this.imageTopWall, 'width', 410  + 'px');
     }
-    
-    
+
+
   }
 
 
   resizeImageDoorHeight(height: number): void {
+
     if (height < 190 || height > this.limit) {
-      height = 190;
+
       this._currentDoorHeight = height;
       this.imageService.setCurrentDoorHeight(height);
       if (this.validLeft) {
@@ -715,24 +716,34 @@ export class ProductSettingsComponent implements OnInit, AfterViewInit {
     const doorHeight = this._initDoorHeight + (this._currentDoorHeight - 190);
     const topHeight = this._initTopHeight + (this._currentTopHeight - 100);
     let marginHeight = this._currentDoorHeight-190;
-    let top = this.imageService.initDoorHeight; 
+    let top = this.imageService.initDoorHeight;
 
     this.imageService.setFullHeight(this.fullHeight);
-  const smalldoorHeight = this._initDoorHeight + ((this._currentDoorHeight - 190)/2);
+  const smalldoorHeight = this._initDoorHeight + ((this._currentDoorHeight - 190)/5);
+
   let smallmarginHeight = (this._currentDoorHeight-190)/2;
 
     if(true){
-      this.renderer.setStyle(this.imageGlass, 'height', smalldoorHeight + 'px');
-      this.renderer.setStyle(this.imageGlass2, 'height', smalldoorHeight + 'px');
-    this.renderer.setStyle(this.imageDoor, 'height', smalldoorHeight + 'px');
-    this.renderer.setStyle(this.imageDoor2, 'height', smalldoorHeight + 'px');
-    this.renderer.setStyle(this.imageHinge, 'height', smalldoorHeight + 'px');
-    this.renderer.setStyle(this.imageKare, 'height', smalldoorHeight + 'px');
+      console.log(this._initDoorHeight+"AUTO EINAI")
+      console.log(this._currentDoorHeight+"AUTO EINAI2")
+      this.renderer.setStyle(this.imageDoor,  'height',smalldoorHeight-6+ 'px');
+      this.renderer.setStyle(this.imageHinge, 'height',smalldoorHeight-6+ 'px');
+      this.renderer.setStyle(this.imageDoor2, 'height',smalldoorHeight-6+ 'px');
+      this.renderer.setStyle(this.imageGlass, 'height',smalldoorHeight-6+ 'px');
+      this.renderer.setStyle(this.imageKare,  'height',smalldoorHeight-6+ 'px');
+
+      this.renderer.setStyle(this.imageDoor,  'margin-top',this._initDoorHeight-smalldoorHeight+7+ 'px');
+      this.renderer.setStyle(this.imageHinge, 'margin-top',this._initDoorHeight-smalldoorHeight+7+ 'px');
+      this.renderer.setStyle(this.imageDoor2, 'margin-top',this._initDoorHeight-smalldoorHeight+7+ 'px');
+      this.renderer.setStyle(this.imageGlass, 'margin-top',this._initDoorHeight-smalldoorHeight+7+ 'px');
+      this.renderer.setStyle(this.imageKare,  'margin-top',this._initDoorHeight-smalldoorHeight+7+ 'px');
+      this.renderer
       let i = smallmarginHeight/9
+      // this.renderer.setStyle(this.imageWalls, 'margin-top', smallmarginHeight - i + 'px');
       if(smalldoorHeight === top + smallmarginHeight){
         top = top - smallmarginHeight + (smalldoorHeight - (top + 1))*3;
-      this.renderer.setStyle(this.imageWalls, 'margin-top', smallmarginHeight - i + 'px');
-      this.renderer.setStyle(this.imageTopWall, 'margin-top', smallmarginHeight - i + 'px');
+        //  this.renderer.setStyle(this.imageWalls, 'margin-top', smallmarginHeight - i + 'px');
+          // this.renderer.setStyle(this.imageTopWall, 'margin-margin',  smallmarginHeight -i + 'px');
       }
     }else{
       this.renderer.setStyle(this.imageGlass, 'height', doorHeight + 'px');
@@ -748,16 +759,16 @@ export class ProductSettingsComponent implements OnInit, AfterViewInit {
       this.renderer.setStyle(this.imageTopWall, 'margin-top', marginHeight - i + 'px');
     }
     }
-  
-    
-    
-    
+
+
+
+
 
     if(this.query.matches){
       console.log(this.currentDoorHeight);
       top = top - (10*((this._currentDoorHeight-200)/2)-((this._currentDoorHeight-200)/2));
       if(top>501){
-        top = 501;
+        top = 450;
       }
       this.renderTop(top,this.imageService.initDoorWidth);
     }else{
@@ -769,7 +780,7 @@ export class ProductSettingsComponent implements OnInit, AfterViewInit {
       console.log(top);
     this.renderTop(top,this.imageService.initDoorWidth);
     }
-    
+
 
     if (this.validLeft) {
       if (this.validTop) {

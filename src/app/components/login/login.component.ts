@@ -14,6 +14,9 @@ axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 })
 export class LoginComponent implements OnInit {
   name:string
+  storage:any;
+  spinerVisible = false
+  private token:string= "N0Fh3HYzQ28OT0CT1Ka6BgMQg7Zro6Zl0HWHYL1r8CxabUbMV72TjkcPdXX"
   constructor(
     private auth: AuthService,
     private router: Router,
@@ -28,43 +31,41 @@ export class LoginComponent implements OnInit {
 
 
   login(form: NgForm) {
-    console.log("mphke")
+    this.spinerVisible = true
     if (!form.valid) {
       return;
     }
     else{
-    console.log("mphke")
+
     const afm = form.value.username;
     const code = form.value.password;
-    // axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyCAwJM_nkRWgPvXmhBqWfdLI4qdCXyoAsE',{
-    //   service: "SqlData",
-    // clientID:"9J8pH7KbDqDXJsn4S5HG9JT4HLLOLKLCKN1oJLX5HrLpG694Ocn3J2KsC2KtGrH6TanLNrTKS4PqRMDDG71ZLoKrHL5bLbznLKLo9JL3KqmbDqL9H5HKILPLH2KtH6HDSN1Z9JL2Gq16LYKrHLL4NrLLGqGbDqHOKazPOLLLH7H2GqDGK4jMP4LL9JOmHLLHJoKrH410JtHZL2KtGaXrLKGbDqHdLoKrHM5IG4TeGK9CJ7LLUKrXHKDeSa9PKNLQUMHKKLHLH0" ,
-    // appId: "3001",
-    // SqlName: "AFM-KOD",
-    // param1: afm,
-    // param2: code
-    // }).then(resData=>{
-    //   console.log('hello')
-    // })
-
     axios({
       method: 'GET',
       url: 'http://localhost:4000/',
       headers: { 'Content-Type': 'aplication/json;charaset=windows-1253'},
-      params: { username: afm, password: code },
+      params: {
+        username: afm,
+        password: code,
+        token: this.token
+      },
     }).then((resData: any) => {
-        console.log(resData)
-        const success = resData.data.success
-        if(success){
+        const totacount = resData.data.totalcount
+        if(totacount!=0){
           this.name = resData.data.rows[0].NAME
           this.auth.setAuthanticate(true)
           this.auth.setcustomer(this.name)
+          this.spinerVisible = false
           this.router.navigate(['']);
+        }
+        else{
+          this.spinerVisible = false
+          this.error = "Invalid Credentials"
+          form.reset();
         }
         });
 
 
-    form.reset();
+
     }
   }
 

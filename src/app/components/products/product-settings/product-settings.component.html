@@ -17,7 +17,7 @@
       <div class="slider-container">
         <mat-label class="settings-label">Ύψος πόρτας (cm):</mat-label><br>
         <div class="center-content">
-          <input matInput class="input-box" type="number" min="190" max="300" [placeholder]="currentDoorHeight"
+          <input matInput class="input-box" type="number" min="190" max="250" [placeholder]="currentDoorHeight"
             [(ngModel)]="currentDoorHeight" (change)="resizeImageDoorHeight(currentDoorHeight)"><br>
         </div>
         <mat-slider class="slider" value="190" min="190" [max]="findlimit" thumbLabel [displayWith]="formatLabel"
@@ -43,11 +43,11 @@
         </button>
         <span style="font-weight: bold;">DIN RIGHT</span>
         </div>
-        
+
       </div>
     </div>
 
-    
+
 
     <!-- START ==> EXTRA SLIDERS FOR EVERY DOOR EXTRA COMPONENT -->
     <div *ngIf="validLeft">

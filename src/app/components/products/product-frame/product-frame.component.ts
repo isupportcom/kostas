@@ -23,11 +23,11 @@ export class ProductFrameComponent implements OnInit {
      id: 4},
      {name: '',
      id: 5}
-     
+
   ]
 
   @Input()frame: ProductFrame;
-  
+
    productFrame: ProductFrame;
    selectframetype = false;
    kar : ProductFrame;
@@ -49,7 +49,7 @@ export class ProductFrameComponent implements OnInit {
   bnt8: string;
   bnt9: string;
   _currentsize: number = 75;
-  
+
   lockcolors = gt14dl;
   lockcolors1 = gt14dl2;
   lockcolors2 = dk24;
@@ -76,7 +76,7 @@ export class ProductFrameComponent implements OnInit {
   lockcolors23 = GT1060hs07;
 
   kare = kare;
-  
+
 
   glasses = GlassColors;
   framescolors = Colors;
@@ -134,7 +134,7 @@ export class ProductFrameComponent implements OnInit {
     }else{
       this.resizegt10wall(this.pfService.gt10size);
     }
-    
+
 
     for(let i=0; i<=54; i++){
       this._colors[i] = this.colors[i];
@@ -143,11 +143,11 @@ export class ProductFrameComponent implements OnInit {
     this.pfService.getAllProductFrames()
     .subscribe((productsFrame)=> this.productsFrame = productsFrame);
 
-    
+
     for(let i=0; i<=9;i++){
       this.kares[i] = this.kare[i];
     }
-    
+
     if(!!this.pfService.productframe ){
       this.productFrame = this.pfService.getProductFrame();
       this.frame = this.selectedProductFrame;
@@ -164,7 +164,7 @@ export class ProductFrameComponent implements OnInit {
             this.setProductFrame(this.productFrame);
           this.onType(i);
           }
-          
+
         }
       }
     }else{
@@ -172,9 +172,9 @@ export class ProductFrameComponent implements OnInit {
       this.setProductFrame(this.productFrame);
     }
 
-    
+
     if(this.ischeck){
-      console.log(this.pfService.lockname);
+
       if(this.pfService.lockname === 'GT14DL2'){
         this.lock(2);
       }else if(this.pfService.lockname === 'GT14DL'){
@@ -196,7 +196,7 @@ export class ProductFrameComponent implements OnInit {
       }
     }
 
-   
+
   }
 
   nokares = false;
@@ -231,7 +231,7 @@ export class ProductFrameComponent implements OnInit {
   setFramekare(kar: ProductFrame): void{
       this.kar = kar;
       this.pfService.setFrameKare(kar);
-    
+
   }
 
   get selectedFrameKare(){
@@ -335,7 +335,7 @@ export class ProductFrameComponent implements OnInit {
   get ischeck(){
     if(this.framed || this.hinged || this.wooden)
     return true;
-  } 
+  }
 
   getchoices(b : boolean){
     const type = this.pfService.productframe.type;
@@ -376,7 +376,7 @@ export class ProductFrameComponent implements OnInit {
   colorframe: color;
   lock(n: number){
 
-    
+
     this.frame = this.pfService.getFrame();
 
     if(this.frame.type === "ALUMINIUM LEAF" || this.frame.type === "WOODEN LEAF"){
@@ -428,9 +428,9 @@ export class ProductFrameComponent implements OnInit {
           this._colors[i] = this.gt10hinge[i];
           }
       }
-      
+
     }
-    
+
   this.bnt1 = 'btn-';
   this.bnt2 = 'btn-';
   this.bnt3 = 'btn-';
@@ -442,7 +442,7 @@ export class ProductFrameComponent implements OnInit {
   this.bnt9 = 'btn-';
 
   this.colorframe = this.pfService.colorframe;
-    console.log(this.colorframe.name);
+
     if(n === 2){
       this.pfService.lockImage("./assets/locks/gt14dl2.jpg","GT14DL2");
       this.bnt2 = "active";
@@ -576,7 +576,7 @@ export class ProductFrameComponent implements OnInit {
             }
           }
         }
-        
+
       }else if(n === 6){
         this.pfService.lockImage('./assets/locks/dl04.jpg','DL04');
         this.bnt6 = "active";
@@ -609,7 +609,7 @@ export class ProductFrameComponent implements OnInit {
             }
           }
         }
-        
+
       }else if(n === 7){
         this.pfService.lockImage('./assets/locks/hd01a.jpg','HD01A');
         this.bnt7 = "active";
@@ -642,7 +642,7 @@ export class ProductFrameComponent implements OnInit {
             }
           }
         }
-        
+
       }else if(n === 8){
         this.pfService.lockImage('./assets/locks/round.jpg','ROUND');
         this.bnt8 = "active";
@@ -655,7 +655,7 @@ export class ProductFrameComponent implements OnInit {
           }
         }
         }else if(this.productFrame.name === 'GT11' || this.productFrame.name === 'GT13'){
-          for(let i=0; i<=54; i++){ 
+          for(let i=0; i<=54; i++){
             this._colors[i].img = this.round[i].img;
             this.colors[i].img = this.woodengt11[i].img;
             if(this.colorframe.name === this._colors[i].name){
@@ -663,7 +663,7 @@ export class ProductFrameComponent implements OnInit {
             }
           }
         }else if(this.productFrame.name === 'GT10' || this.productFrame.name === 'GT60'){
-          for(let i=0; i<=54; i++){ 
+          for(let i=0; i<=54; i++){
             this._colors[i].img = this.roundgt1060[i].img;
             this.colors[i].img = this.woodengt1060[i].img;
             if(this.colorframe.name === this._colors[i].name){
@@ -696,7 +696,7 @@ export class ProductFrameComponent implements OnInit {
             }
           }
         }
-        
+
       }
   }
 

@@ -31,7 +31,7 @@ export class ProductSummaryComponent implements OnInit, AfterViewInit {
   private readonly chargePerDimension: number = 2;
   private _customer: Customer;
   private _product: Product;
-  @ViewChild('content') content:ElementRef;  
+  @ViewChild('content') content:ElementRef;
   pdfTable!: ElementRef;
   finalDoorImageBase64: unknown;
   pdfImage = new Image();
@@ -60,7 +60,7 @@ export class ProductSummaryComponent implements OnInit, AfterViewInit {
     this.printImage();
      setTimeout(() => {
       this.printImage();
-    }, 500); 
+    }, 500);
   }
 
  clr: color ={
@@ -111,7 +111,7 @@ get imageframe(){
   if(!!this.pfService.productframe){
     image =  this.pfService.productframe.img_url;
   }
-    return image; 
+    return image;
 }
 
 get imageglass(){
@@ -163,7 +163,7 @@ get imagecolor(){
     if(this.pfService.getColorFrame()){
       return this.pfService.getColorFrame();
     }else{
-      return this.clr; 
+      return this.clr;
     }
   }
 
@@ -238,7 +238,6 @@ get imagecolor(){
   // IMAGE SCREENSHOT
   private printImage() {
     html2canvas(document.querySelector('.img-container'), { allowTaint: true }).then(canvas => {
-      // const image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
       const image = canvas.toDataURL(this.imageService.imageUrl);
       this.imageService.setImageUrl(image);
     });
@@ -250,99 +249,17 @@ get imagecolor(){
     return  euro + (this.finalPrice).toFixed(2);
   }
 
-  // GENERATE PDF
-  // async generatePdf(value: string): Promise<void> {
-  //   if (!(value === 'download' || value === 'view' || value === 'print')) {
-  //     alert('mallon exei ginei mlkia');
-  //   }
-  //   const image = this.imageService.imageUrl;
-  //   const euro: string = '\u20ac';
-  //   const multiplication: string = '\u00D7';
-  //   const polName: string = this._customer.timol_pol.id.toString();
-  //   const usernameNoSpace: string = this._customer.username.replace(/\s/g, '');
-  //   const fileName: string = 'Prosfora-' + polName + '-' + usernameNoSpace + '.pdf';
 
-  //   const pdf = {
-  //     pageSize: 'A4',
-  //     pageOrientation: 'portrait', // portrait
-  //     info: {
-  //       title: 'Prosfora',
-  //       author: 'Onoma Etairias',
-  //       subject: 'Prosfora timis me vasi ton pelati',
-  //       keywords: ['agora', 'prosfora', 'portes', 'parathira']
-  //     },
-  //     content: [
-  //       { image: await this.getBase64ImageFromURL('../../../assets/pdf_pca.png') },
-  //       {
-  //         layout: 'lightHorizontalLines',
-  //         table: {
-  //           headerRows: 0,
-  //           widths: ['70%', '30%'],
-  //           body: [
-  //             [{ text: 'Όνοματεπώνυμο Πελάτη', bold: true }, this.customer.username],
-  //             [{ text: 'Τιμολογιακή πολιτική', bold: true }, this.customer.timol_pol.name],
-  //             [{ text: 'Ποσοστό έκπτωσης βάση της τιμολογιακής πολιτικής', bold: true }, this.customer.timol_pol.discount + '%'],
-  //             [{ text: 'Κωδικός προϊόντος', bold: true }, this._product.pid],
-  //             [{ text: 'Όνομα προϊόντος', bold: true }, this._product.name],
-  //             [{ text: 'Αρχική τιμή', bold: true }, euro + (this._product.initPrice).toFixed(2)],
-  //             [
-  //               { text: 'Διαστάσεις προϊόντος', bold: true },
-  //               (this.imageService.fullWidth / 100).toFixed(2) + 'm ' + multiplication + ' '
-  //               + (this.imageService.fullHeight / 100).toFixed(2) + 'm'
-  //             ],
-  //             [
-  //               { text: 'Τελική τιμή με έκπτωση ' + this._customer.timol_pol.discount + '%', bold: true },
-  //               { text: euro + (this.finalPrice).toFixed(2) }
-  //             ],
-  //           ],
-  //         },
-  //       },
-  //       { image: await this.getBase64ImageFromURL(image), style: 'center'},
-  //       { qr: 'https://fir-df076.web.app/', style: 'qr', fit: 100 },
-  //     ],
-  //     styles: {
-  //       left: {
-  //         alignment: 'center',
-  //         margin: 10
-  //       },
-  //       qr: {
-  //         alignment: 'right',
-  //       },
-  //       image:{
-  //         width: 500+'px',
-  //         alignment: 'center'
-  //       }
-  //     }
-  //   };
-  //   switch (value) {
-  //     case 'download': {
-  //       pdfmake.createPdf(pdf).download(fileName);
-  //       break;
-  //     };
-  //     case 'view': {
-  //       pdfmake.createPdf(pdf).open();
-  //       break;
-  //     };
-  //     case 'print': {
-  //       pdfmake.createPdf(pdf).print();
-  //       break;
-  //     };
-  //     default: {
-  //       console.log('Error');
-  //       break;
-  //     }
-  //   }
-  // }
 
- 
-  
+
+
   public async downloadAsPDF( download:boolean) {
     this.spinerVisible = true;
     this.hideInfo = false;
     this.dateNow = new Date();
     this.dimentions = `${this.width} x ${this.height}`;
-    let content= this.content.nativeElement;  
-    
+    let content= this.content.nativeElement;
+
     var HTML_Width = 1400;
 		var HTML_Height = 1720;
 		var top_left_margin = 0;
@@ -350,28 +267,28 @@ get imagecolor(){
 		var PDF_Height = (PDF_Width *1.2)+(top_left_margin*2);
 		var canvas_image_width = HTML_Width;
 		var canvas_image_height = HTML_Height;
-		
+
 		var totalPDFPages = Math.ceil(HTML_Height/PDF_Height)-1;
-		
+
     const image = this.imageService.imageUrl;
-    let that = this; 
+    let that = this;
     this.pdfImage.src = image;
     this.pdfImage.onload = function () {
       html2canvas(content,{allowTaint:true}).then(function(canvas) {
         canvas.getContext('2d');
-        
-        console.log(canvas.height+"  "+canvas.width);
-        
+
+
+
         var imgData = canvas.toDataURL("image/jpeg", 1.0);
         var pdf = new jsPDF('p', 'pt',  [PDF_Width, PDF_Height]);
         pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin,canvas_image_width,canvas_image_height);
-        
-        
-        for (var i = 1; i <= totalPDFPages - 1; i++) { 
+
+
+        for (var i = 1; i <= totalPDFPages - 1; i++) {
           pdf.addPage( [PDF_Width, PDF_Height]);
           pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
         }
-        
+
         if  (download){
           pdf.save("Προσφορά");
         }else{
@@ -387,13 +304,13 @@ get imagecolor(){
   private async getBase64ImageFromURL(imageUrl) {
     var res =  await fetch(imageUrl);
     var blob =  await res.blob();
-  
+
     return new Promise((resolve, reject) => {
       var reader  = new FileReader();
       reader.addEventListener("load", function () {
           resolve(reader.result);
       }, false);
-  
+
       reader.onerror = () => {
         return reject(this);
       };

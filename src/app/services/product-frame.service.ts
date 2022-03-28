@@ -20,7 +20,7 @@ export class ProductFrameService {
   private product: Product;
   private ftype = false;
   kares = kare;
- 
+
   karearr: locks[] = [];
   kare1 = kare1;
   kare2 = kare2;
@@ -31,7 +31,7 @@ export class ProductFrameService {
   kare7 = kare7;
   kare8 = kare8;
   kare9 = kare9;
-  k = 
+  k =
     {
       id:1,
     name:"",
@@ -72,7 +72,6 @@ _productFrame = {
     this.kare = productKare;
     this.product.description= this.kare.type; //eikona kare
     this.currentkarename = productKare.description;
-    console.log(this.currentkarename);
   }
 
   get frameKare(){
@@ -88,7 +87,7 @@ _productFrame = {
   get gt10size(){
     return this._gt10size;
   }
-  
+
   get karename(){
     return this.currentkarename;
   }
@@ -136,19 +135,18 @@ _productFrame = {
     this.product.product_frame.description = './assets/product/door/woods/3rdhingeWooden.png'
   }
 }
-    
+
 
 
   setKareColor(img: string){
     this.product.description = img;
   }
-    
-  
+
+
 
   setColorGlass(c: glasscolor){
     this.colorGlass = c;
     this.product.glass_img = this.colorGlass.img;
-    console.log(this.product.glass_img)
   }
 
   lockimg : string;

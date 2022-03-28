@@ -28,3 +28,26 @@
   .footer-logo{
     width: 50%;
   }
+
+  .error{
+    color:red;
+    justify-content: center;
+
+  }
+  .utilsDiv{
+    z-index: 1000!important;
+    position:fixed;
+    top: 35%;
+    left: 45%;
+    background-color: white;
+    padding:5em 4em!important;
+    border-radius:5px;
+  }
+  @media screen and (max-width: 200%){
+    .content{
+      float: left;
+      padding:0;
+      width: 94%;
+      margin:3%
+    }
+  }

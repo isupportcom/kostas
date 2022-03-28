@@ -10,12 +10,19 @@
 
                 <mat-form-field >
                   <mat-label>Password</mat-label>
-                  <input matInput type="password" placeholder="Password" value="" name="password" id="password" ngModel required >
+                  <input matInput type="password" placeholder="Password" value="" name="password" id="password" ngModel required minlength="9">
                 </mat-form-field>
+                <div class="error"*ngIf="error">{{error}}</div><br>
                 <button mat-raised-button type="submit"  [disabled]="!form.valid"> Login </button>
                 <button style="margin-top: 15px;color: rgb(0, 0, 0); background-color: #F0F0F0;"  mat-raised-button type="button" (click)="guest()" > Login as Guest</button>
              </form>
         </mat-card>
+    </div>
+  </div>
+  <div  *ngIf="spinerVisible == true">
+    <div fxLayout="column" fxLayoutAlign="center center" class="utilsDiv">
+      <mat-spinner></mat-spinner>
+      <h2>One Minute</h2>
     </div>
   </div>
     <!-- Footer -->

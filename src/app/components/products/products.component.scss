@@ -1,12 +1,17 @@
 .products-content {
-  background     : url('https://wallpaperaccess.com/full/1091554.jpg');
+  background     : url('C:/Users/User1/Desktop/configurator-project/src/assets/background/background.png');
   background-size: 100% 100%;
   box-sizing: border-box;
   display        : block;
+  top:0;
 
   .imageDoor{
     display: flex;
     justify-content: center;
+  }
+  .icons{
+    display:flex;
+    float:left;
   }
 
   .image-container {
@@ -16,12 +21,14 @@
     align-items   : center;
     justify-content: center;
    // transform  : scale(0.1);
-    
+
   }
 
   .object-back{
       position: absolute;
       display:flex;
+
+
     }
 
     .object-top{
@@ -29,16 +36,20 @@
       width: 675px;
       height: 833px;
       position: absolute;
-      display:flex;
+      display:grid;
+
+
+
+
     }
     .glass {
-      
+
       position: absolute;
-      display: flex;
+      display: grid;
     }
     .glass2 {
       position: absolute;
-      display: flex;
+      display:flow-root;
       margin-right: 25px;
       -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
@@ -74,13 +85,13 @@
   .icons{
     height: 790px;
     width: 100px;
-    margin-right: 1000px; 
+    margin-right: 1000px;
     position: fixed;
   }
 
   //MEDIA
 
-  @media screen and (max-width: 1840px) {
+  @media screen and (max-width: 200%) {
 
     .frame{
       border-radius: 50%;
@@ -96,13 +107,18 @@
       width: 400px ;
       height: 500px ;
       position: absolute;
-      display: flex;
+      display: grid;
+
+
     }
+
     .glass,.object-top{
       width: 410px ;
       height: 500px ;
       position: absolute;
-      display: flex;}
+      display: grid;
+
+    }
 
       .glass2 {
         position: absolute;
@@ -136,15 +152,77 @@
       position: relative;
       height: 500px;
       width: 100px;
-      margin-right: 500px; 
+      margin-right: 500px;
       position: fixed;
     }
-    
+
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 480px){
   .frame{
+    float: left;
+    padding:0;
+    width: 94%;
+    margin:3%
+  }
+  .frame:hover{
+    transition: transform .5s ease-in-out;
+    transform : scale(1.2);
+  }
+
+  .object-back{
+    width: 400px ;
+    height: 500px ;
+    position: absolute;
+    display: flex;
+    bottom: 2%;
+
+  }
+
+  .glass,.object-top{
+    width: 410px ;
+    height: 500px ;
+    position: absolute;
+    display: flex;
+    bottom: 2%;
+  }
+
+    .glass2 {
+      position: absolute;
+      display: flex;
+      margin-right: 15px;
+      -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    }
+  .object2 {
+    width: 400px ;
+    height: 500px ;
+    margin-right: 15px;
+    position: relative;
+    display: flex;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    display: flex;
+  }
+  .object {
+    position: relative;
+    display: flex;
+    width: 400px ;
+    height: 500px ;
+    display: flex;
+  }
+  .hide {
     display: none;
   }
+
+  .icons{
+    position: relative;
+    height: 500px;
+    width: 100px;
+    margin-right: 500px;
+    position: fixed;
+  }
+
 }
 }
+
 

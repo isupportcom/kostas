@@ -53,7 +53,7 @@ export class NavComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this._customer = this.auth.customer;
-    console.log(this._customer.username)
+
     this._tabList = Tabs;
     this._currentTab = this._tabList[0];
   }

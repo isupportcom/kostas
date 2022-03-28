@@ -5,13 +5,22 @@
 html,
 body {
   height: 100%;
-}
 
+}
 body {
   margin     : 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-}
+  overflow: hidden;
 
+
+}
+.backimg{
+  position: absolute;
+
+}
+.post-body entry-content {
+  display: none;
+}
 .tooltip {
   font-size: medium;
 }
@@ -22,4 +31,12 @@ body {
 
 .mat-tab-body{
   overflow: hidden!important;
+}
+@media screen and (max-width: 150%){
+  html{
+    float: left;
+    padding:0;
+    width: 94%;
+    margin:3%
+  }
 }
